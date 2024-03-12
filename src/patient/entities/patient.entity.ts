@@ -1,5 +1,6 @@
 import { ContactDetail } from "src/contact-details/entities/contact-detail.entity";
 import { FormStatus } from "src/form-status/entities/form-status.entity";
+import { PatientQuestionTracker } from "src/patient-question-tracker/entities/patient-question-tracker.entity";
 import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 
@@ -62,9 +63,12 @@ export class Patient {
   formCompleted: boolean;
    
    @OneToMany(()=> ContactDetail, (contact)=>contact.patient, {eager:true})
-   contacts:ContactDetail[]
+   contacts:ContactDetail[];
 
    @OneToMany(()=>FormStatus, (form)=>form.patient)
-   forms:FormStatus[]
+   forms:FormStatus[];
+
+   @OneToOne(()=> PatientQuestionTracker, patientSectionMaster=>patientSectionMaster.patient)
+  patientQuestionTracker:PatientQuestionTracker;
   
 }
