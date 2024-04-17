@@ -35,7 +35,7 @@ import { PatientQuestionTracker } from './patient-question-tracker/entities/pati
         host: 'localhost',
         port: 3306,
         username: 'root',
-        password: '*******',
+        password: '',
         synchronize: true,
         logging: false,
         
